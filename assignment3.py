@@ -33,8 +33,8 @@ BATCH_SIZE = 8
 NUM_SEGMENTS = 8
 RES_NEXT_OUT = 2048
 NUM_EPOCHS = 20
-CHECKPOINT_FOLDER = os.path.join('models_checkpoints', 'model_1')
-METRICS_FOLDER = os.path.join('metrics', 'model_1')
+CHECKPOINT_FOLDER = os.path.join('models_checkpoints', 'model_2')
+METRICS_FOLDER = os.path.join('metrics', 'model_2')
 
 np.random.seed(SEED)
 
@@ -259,10 +259,12 @@ class GestureClassifier(nn.Module):
         super().__init__()
 
         # define 
-        self.ln1 = nn.Linear(input_size, int(input_size/4))
-        self.ln2 = nn.Linear(int(input_size/4), int(input_size/8))
-        self.ln3 = nn.Linear(int(input_size/8), num_classes)
-
+        self.ln1 = nn.Linear(input_size, int(input_size/1.5))
+        self.ln2 = nn.Linear(int(input_size/1.5), int(input_size/3))
+        self.ln3 = nn.Linear(int(input_size/3), int(input_size/6))
+        self.ln4 = nn.Linear(int(input_size/6), int(input_size/12))
+        self.ln5 = nn.Linear(int(input_size/12), num_classes)
+        
         # init
         self.initialize_layer(self.ln1)
         self.initialize_layer(self.ln2)
@@ -272,7 +274,9 @@ class GestureClassifier(nn.Module):
     def forward(self, x):
         x = torch.relu(self.ln1(x))
         x = torch.relu(self.ln2(x))
-        x = self.ln3(x)
+        x = torch.relu(self.ln3(x))
+        x = torch.relu(self.ln4(x))
+        x = self.ln5(x)
         return x
         
 
@@ -514,5 +518,5 @@ criterion = nn.CrossEntropyLoss()
 # In[17]:
 
 
-train(model, res_next, train_loader, val_loader, optimizer, criterion, device, NUM_EPOCHS)
+train(model, res_next, train_loader, val_loader, optimizer, criterion, device, NUM_EPOCHS, with_train_set_metrics=True)
 
