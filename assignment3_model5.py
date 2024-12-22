@@ -33,8 +33,8 @@ BATCH_SIZE = 8
 NUM_SEGMENTS = 4
 RES_NEXT_OUT = 2048
 NUM_EPOCHS = 20
-CHECKPOINT_FOLDER = os.path.join('models_checkpoints', 'model_2')
-METRICS_FOLDER = os.path.join('metrics', 'model_2')
+CHECKPOINT_FOLDER = os.path.join('models_checkpoints', 'model_5')
+METRICS_FOLDER = os.path.join('metrics', 'model_5')
 
 np.random.seed(SEED)
 

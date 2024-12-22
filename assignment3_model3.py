@@ -33,8 +33,8 @@ BATCH_SIZE = 8
 NUM_SEGMENTS = 8
 RES_NEXT_OUT = 2048
 NUM_EPOCHS = 20
-CHECKPOINT_FOLDER = os.path.join('models_checkpoints', 'model_2')
-METRICS_FOLDER = os.path.join('metrics', 'model_2')
+CHECKPOINT_FOLDER = os.path.join('models_checkpoints', 'model_3')
+METRICS_FOLDER = os.path.join('metrics', 'model_3')
 
 np.random.seed(SEED)
 
@@ -514,5 +514,5 @@ criterion = nn.CrossEntropyLoss()
 # In[17]:
 
 
-train(model, res_next, train_loader, val_loader, optimizer, criterion, device, NUM_EPOCHS, with_train_set_metrics=True)
+train(model, res_next, train_loader, val_loader, optimizer, criterion, device, NUM_EPOCHS)
 
