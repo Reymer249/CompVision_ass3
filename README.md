@@ -1,4 +1,8 @@
-The structure of the repository:
+# Overview
+
+For the overview of the project see `ass3_report.pdf`
+
+# Repository Structure 
 
 - junk_artifacts - old files, that are not needed anymore, but it is too pity to delete them
 - metrics - the folder with the results of training. There is a folder for each model, containing the lists of accuracies and losses through training, saved as `.pkl` files.
